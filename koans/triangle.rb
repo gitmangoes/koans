@@ -14,9 +14,14 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  if(a == b and b == c)
+  if a <= 0 or b <= 0 or c <= 0
+    raise TriangleError, "Triangle sides need length > 0"
+  end
+  raise TriangleError, "Impossible triangle" if a+b<=c or a+c<=b or b+c<=a
+
+  if a == b and b == c
     return :equilateral
-  elsif(a == b or b == c or a == c)
+  elsif a == b or b == c or a == c
     return :isosceles
   else
     return :scalene
